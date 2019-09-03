@@ -3,6 +3,7 @@ package com.pitagoras.loja.controller;
 import com.pitagoras.loja.domain.Product;
 import com.pitagoras.loja.repository.ProductRepository;
 import com.pitagoras.loja.service.ProductService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@Api
 public class ProductController extends BaseController{
 
     @Autowired
