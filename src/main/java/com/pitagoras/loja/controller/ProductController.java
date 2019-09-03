@@ -2,6 +2,7 @@ package com.pitagoras.loja.controller;
 
 import com.pitagoras.loja.domain.Product;
 import com.pitagoras.loja.repository.ProductRepository;
+import com.pitagoras.loja.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,9 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private ProductService productService;
+
     @GetMapping
     public List<Product> getProducts(){
         return productRepository.findAll();
@@ -23,8 +27,8 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveProduct(@RequestBody Product product){
-        productRepository.save(product);
+    public void saveProduct(@RequestBody Product product) throws Exception {
+        productService.createProduct(product);
     }
 
     @PutMapping
